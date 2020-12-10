@@ -1,12 +1,13 @@
-import React from "react";
-import { fireEvent, render, screen, getByTestId } from "@testing-library/react";
-import ContactForm from "./ContactForm";
+
+import React from 'react'
+import {fireEvent, render, screen, getByTestId} from "@testing-library/react";
+import ContactForm from './ContactForm'
 
 test('renders ContactForm', () =>{
     (<ContactForm />)
 })
 
-test('user can fill out and submit form',async () =>{
+test('fill out the form and submit it',async () =>{
     render(<ContactForm />)
     // Default value of the form
     const firstNameInput= screen.getByTestId("Edd");
@@ -24,8 +25,8 @@ test('user can fill out and submit form',async () =>{
     const button = screen.getByTestId("button")
     fireEvent.click(button);
 
-    //Check the form has my name or not 
-    const newUser = await screen.findByText(/Rafi/i)
+    //Check the form has my name or not and does'nt care about the Case
+    const newUser = await screen.findByText(/rafi/i)
     expect(newUser).toBeTruthy();
 
 
